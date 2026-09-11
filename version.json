@@ -1,1 +1,1 @@
-{"version_code": 11, "version_name": "11.0", "apk_url": "tunneltime-debug.apk", "notes": "v11: server-side inventory pool + delta sync — refresh pulls thin deltas and selects on-device; article bodies lazy-load; multi-image articles keep all inline images in order."}
+{"version_code": 12, "version_name": "12.0", "apk_url": "tunneltime-debug.apk", "notes": "v12: fast refresh, session-new badges, auto-sync/pull-to-refresh, 50k inventory pool, pipeline visualizer"}
