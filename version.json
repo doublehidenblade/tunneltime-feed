@@ -1,1 +1,1 @@
-{"version_code": 12, "version_name": "12.0", "apk_url": "tunneltime-debug.apk", "notes": "v12: fast refresh, session-new badges, auto-sync/pull-to-refresh, 50k inventory pool, pipeline visualizer"}
+{"version_code": 13, "version_name": "13.0", "apk_url": "tunneltime-debug.apk", "notes": "v13: pull-to-refresh fully replaces feed with unseen items only (up to 40); impression-seen tracking persisted; truthful 'all caught up' vs pool-unreachable; auto-sync stays additive; image warmup scoped/capped; engagement learning (70% depth, save-before-read, reopen rate, dislike veto)"}
