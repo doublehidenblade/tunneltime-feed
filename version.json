@@ -1,6 +1,1 @@
-{
-  "version_code": 2,
-  "version_name": "2.0",
-  "notes": "Current public release",
-  "apk_url": "tunneltime-debug.apk"
-}
+{"apk_url":"tunneltime-debug.apk","notes":"In-app updater (daily auto-check + manual check in Settings), native save folders with offline snapshots, mixed feed with interest signals (opens vs scroll-past), full-length article extraction, Hacker News comments prefetched for offline reading.","version_code":3,"version_name":"3.0"}
