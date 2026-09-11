@@ -1,1 +1,1 @@
-{"version_code": 5, "version_name": "5.0", "apk_url": "tunneltime-debug.apk", "notes": "v5: RedNote-style cards with per-outlet source badges; near-complete card images (og:image -> twitter:image -> article first-img fallback chain, cleartext HTTP allowed); text-lede preview when an article genuinely has no image."}
+{"version_code": 6, "version_name": "6.0", "apk_url": "tunneltime-debug.apk", "notes": "v6: video items (YouTube essays/vlogs stream on tap), category taxonomy + filter chips, Muse-authored synth items, paragraph-preserving text, news capped at ~40%."}
