@@ -1,1 +1,6 @@
-{"version_code": 18, "version_name": "18.0", "apk_url": "tunneltime-debug.apk", "notes": "v18: bandit-style ranking — per-tag interest weights now shift with your interactions (opens, 70%+ deep reads, likes, saves) alongside category/source/format, with the dislike veto applying to tags too; a fixed ~20% of every feed refresh is reserved for exploratory picks from tags outside your usual mix, so the feed can never overfit to one or two categories. Why-this-post copy now names your top tags and the exploration share."}
+{
+ "version_code": 19,
+ "version_name": "19.0",
+ "apk_url": "tunneltime-debug.apk",
+ "notes": "v19: empty-state polish — an empty feed while offline now says so honestly (\"You're offline\") and hides the retry button, since retry can't work without connectivity; the search/tag screen's no-results line now names the query or tag that came up empty."
+}
