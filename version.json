@@ -1,6 +1,1 @@
-{
- "version_code": 19,
- "version_name": "19.0",
- "apk_url": "tunneltime-debug.apk",
- "notes": "v19: empty-state polish — an empty feed while offline now says so honestly (\"You're offline\") and hides the retry button, since retry can't work without connectivity; the search/tag screen's no-results line now names the query or tag that came up empty."
-}
+{"apk_url":"tunneltime-debug.apk","notes":"v20: fixes all 5 P0s from Craig's QA — (1) PDP tag chips restored via one-time + ongoing tag backfill for stale article rows; (2) similar posts restored (same root cause); (3) header search crash fixed (LiveData.observe was called off the main thread); (4) startup spinner now resolves when the local 5-preview swap lands (<5s, local-first) while the pool refresh continues silently; (5) 'N min read' removed from the PDP meta line.","version_code":20,"version_name":"20.0"}
