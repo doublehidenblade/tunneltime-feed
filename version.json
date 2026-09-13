@@ -1,6 +1,6 @@
 {
- "apk_url": "tunneltime-debug.apk",
- "version_code": 24,
- "version_name": "24.0",
- "notes": "v24: 8-item P1 batch from on-device QA. (1) Similar-posts card rows restored + regression test. (2) Clickable tag chips on feed cards + PDP; server tag backfill verified (655/655 tagged) and retryable. (3) Feed-card fully-downloaded check indicator; crawl-time 50-word minimum with 'read more' re-fetch, thin items discarded/demoted. (4) Keyword interest signals: add/search in Insights, boosted on-device (KIND_KEYWORD) and fed to server crawl queries + PTR snapshot. (5) Icon-only like/save (matches dislike). (6) PDP duplicate images: real cause was server-carried raw.blocksJson bypassing v21 dedupe \u2014 fixed at PagedSync + defensive bindBlocks + URL normalization. (7) Interest-signal decay: 7-day half-life decay-on-read, decay-then-nudge learning (DB v11); RANKING_RESEARCH.md. (8) Refresh NEVER shows 'all caught up': offline PTR re-ranks local unseen cache; online consumes feed/inventory/refresh.json with truthful status (exhausted/next_crawl_at/inventory_count); every seen item replaced."
+  "apk_url": "tunneltime-debug.apk",
+  "version_code": 25,
+  "version_name": "25.0",
+  "notes": "v25: playable video returns (P1 \u2014 supersedes the v14 ban for downloadable direct-file MP4s; YouTube stays banned). In-app ExoPlayer PDP for playable videos, offline video bank re-activated (WiFi prefetch, ~1GB LRU, idempotent downloads), video rows back in feed/search/promotion queries, video cards earn the fully-downloaded check when banked, Status screen plays a bundled sample MP4 through the same player path. Server: Wikimedia Commons direct mp4/webm inventory restored (downloadable=true), ingestion gate drops only YouTube + stream-only videos, downloadable-video quota + 3-minute-floor exemption restored."
 }
