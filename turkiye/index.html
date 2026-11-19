@@ -303,7 +303,7 @@ details p{margin:0 0 12px;font-size:14px;line-height:1.5;color:var(--muted);font
     <div class="card overview-card" style="margin:14px 0">
       <h3>🗺️ Whole trip — overview map</h3>
       <div id="ovMap" class="day-map" style="margin:0"></div>
-      <p class="note" style="margin-top:8px">Drag to pan · pinch / scroll / + to zoom · double-tap or ⟲ resets · tap a dashed flight line for its details. Below, every day gets its own map — and days that change city get one map per city, each zoomed to that city's streets, so nothing is spanned out. On the day maps, zoom goes to ×10 and sharper street-level detail fades in as you zoom — and every route line (or its time chip) opens that leg's full options: recommended way, duration + estimated cost, the public-transport alternative with instructions, and a Google Maps directions link.</p>
+      <p class="note" style="margin-top:8px">Drag to pan · pinch / scroll / + to zoom · double-tap or ⟲ resets · tap a dashed flight line for its details. Below, every day gets its own map — days that change city get one map per city, each framed tightly on that city's stops so max zoom reaches real street level there. Any leg longer than ~10 km (airport drives, intercity runs) is never drawn inside a city map: it gets its own compact transfer-overview map — orientation only — with its leg sheet still tappable. On the day maps, zoom goes to ×10 and sharper street-level detail fades in as you zoom — and every route line (or its time chip) opens that leg's full options: recommended way, duration + estimated cost, the public-transport alternative with instructions, and a Google Maps directions link.</p>
     </div>
 
     
@@ -982,7 +982,7 @@ var OVERVIEW_PTS=[
 ];
 // ---------- MAP: self-built — baked Esri tile images + Web-Mercator projected SVG route + HTML pins. Zero runtime dependencies. ----------
 // ---------- MAP ENGINE v2: per-day side-by-side maps + overview. Baked images, pan/zoom, clickable legs, time-window pins. Zero runtime deps. ----------
-var MAPVIEWS={"world": {"img": "img/5f49c34a63422281428a.jpg", "z": 4, "x0": 1086, "y0": 1093, "w": 1400, "h": 900}, "turkiye": {"img": "img/86a9518da6f01bd62c12.jpg", "z": 7, "x0": 18651, "y0": 11967, "w": 1400, "h": 900}, "istanbulw": {"img": "img/68610ff712b4e9013476.jpg", "z": 11, "x0": 303489, "y0": 195849, "w": 1400, "h": 900}, "istanbul": {"img": "img/2fec10911f794419793d.jpg", "z": 14, "x0": 2434000, "y0": 1571795, "w": 1400, "h": 900}, "cappadocia": {"img": "img/d68e493efb5b935357db.jpg", "z": 11, "x0": 312169, "y0": 200725, "w": 1400, "h": 900}, "newyork": {"img": "img/1fbac85a4a0356e9fc9b.jpg", "z": 10, "x0": 76523, "y0": 98123, "w": 1400, "h": 900}};
+var MAPVIEWS={"world": {"img": "img/5f49c34a63422281428a.jpg", "z": 4, "x0": 1086, "y0": 1093, "w": 1400, "h": 900}, "turkiye": {"img": "img/86a9518da6f01bd62c12.jpg", "z": 7, "x0": 18651, "y0": 11967, "w": 1400, "h": 900}, "istanbulw": {"img": "img/68610ff712b4e9013476.jpg", "z": 11, "x0": 303489, "y0": 195849, "w": 1400, "h": 900}, "istanbul": {"img": "img/2fec10911f794419793d.jpg", "z": 14, "x0": 2434000, "y0": 1571795, "w": 1400, "h": 900}, "cappadocia": {"img": "img/d68e493efb5b935357db.jpg", "z": 11, "x0": 312169, "y0": 200725, "w": 1400, "h": 900}, "newyork": {"img": "img/1fbac85a4a0356e9fc9b.jpg", "z": 10, "x0": 76523, "y0": 98123, "w": 1400, "h": 900}, "nyc": {"img": "img/8d740f5424bf8b17c1ff.jpg", "z": 13, "x0": 617150, "y0": 787741, "w": 1400, "h": 900}, "istpm": {"img": "img/f5e0f8a7be19bf456279.jpg", "z": 13, "x0": 1216813, "y0": 785680, "w": 1400, "h": 900}};
 var DAYVIEW={all:'world',d20:'newyork',d21:'istanbulw',d22:'istanbul',d23:'istanbul',d24:'turkiye',d25:'cappadocia',d26:'cappadocia',d27:'turkiye',d28:'world'};
 // Detail mosaics: ONE full-footprint mosaic per view, stitched from Esri tiles at base zoom +1
 // (2800x1800 over the same ground as the 1400x900 base). It fades in past ~1.9x. The zoom level is
@@ -993,16 +993,23 @@ var DETAILVIEWS={
  istanbulw:{img:'img/86c7e0761ff8ee14a0b1.jpg',z:12,lat:41.044284,lon:28.987305,w:2800,h:1800},
  cappadocia:{img:'img/47a291700d6fa7708df8.jpg',z:12,lat:38.642425,lon:34.810425,w:2800,h:1800},
  newyork:{img:'img/4782cdaab63854f4607f.jpg',z:11,lat:40.839077,lon:-73.992920,w:2800,h:1800},
+ nyc:{img:'img/3c47b32301d4d02a3b37.jpg',z:14,lat:40.7515,lon:-73.9390,w:2800,h:1800},
+ istpm:{img:'img/f72e6fcb5e67fa1dfaee.jpg',z:14,lat:41.0190,lon:29.0000,w:2800,h:1800},
  turkiye:{img:'img/8dd72dbcbe6f2ea2884a.jpg',z:8,lat:39.892133,lon:32.848435,w:2800,h:1800}
 };
 var DEEPPATCHES={};
 function gpx(lat,lon,z){ var n=256*Math.pow(2,z); var x=(lon+180)/360*n; var r=lat*Math.PI/180; var y=(1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*n; return [x,y]; }
-// City-split days: one map per city so no single map has to span a flight. stops = indices into ROUTES[key].stops; flight = connector card shown after that segment.
+// City-split days: one map per city, framed on that city's stops only. NO city map spans a leg
+// longer than ~10 km: airport drives + intercity legs get their own compact transfer-overview map
+// (orientation only, leg sheet still tappable) or a flight connector card between the city maps.
+// stops = indices into ROUTES[key].stops (consecutive, so LEGDATA/LEGOPTS indexing stays valid);
+// flight = connector card shown after that segment.
 var DAYSEGS={
- d21:[{view:'istanbulw',title:'Arrival — IST airport → Karaköy',stops:[0,1,2]},{view:'istanbul',title:'Karaköy evening — dinner + dessert streets',stops:[2,3,4,5]}],
+ d20:[{view:'nyc',title:'New York — Long Island City streets',stops:[0]},{view:'newyork',title:'Transfer overview — LIC → Newark EWR · ~45 km drive (orientation only)',stops:[0,1,2]}],
+ d21:[{view:'istanbulw',title:'Transfer overview — IST airport → Karaköy · ~45 km drive (orientation only)',stops:[0,1,2]},{view:'istanbul',title:'Istanbul — Karaköy evening: dinner + dessert streets',stops:[2,3,4,5]}],
  d24:[{view:'istanbul',title:'Istanbul — hamam + checkout',stops:[0,1,2,3],flight:{album:'tkdom',label:'✈️ TK2006 · Istanbul IST → Nevşehir NAV',sub:'14:30 → 15:50 · PNR ··R3 · Avis pickup at NAV on the next map'}},{view:'cappadocia',title:'Cappadocia — NAV airport → Göreme',stops:[5,6,7,8,9]}],
- d27:[{view:'cappadocia',title:'Cappadocia — Göreme → NAV airport',stops:[0,1,2,3],flight:{album:'tk2007',label:'✈️ TK2007 · Nevşehir NAV → Istanbul IST',sub:'16:45 → 18:20 · PNR ··R3 · VIP transfer meets you at IST'}},{view:'istanbulw',title:'Istanbul — evening + Asian-side options',stops:[5,6,7,8,9,10,11,12,13]}],
- d28:[{view:'istanbulw',title:'Istanbul — hotel → IST departure',stops:[0,1,2,3],flight:{album:'tk3',label:'✈️ TK3 · Istanbul IST → New York JFK',sub:'08:05 → 10:55 · PNR ··4B · Uber home from JFK T1'}},{view:'newyork',title:'New York — JFK → home in LIC',stops:[4,5]}]
+ d27:[{view:'cappadocia',title:'Cappadocia — Göreme → NAV airport',stops:[0,1,2,3],flight:{album:'tk2007',label:'✈️ TK2007 · Nevşehir NAV → Istanbul IST',sub:'16:45 → 18:20 · PNR ··R3 · VIP transfer meets you at IST'}},{view:'istanbulw',title:'Transfer overview — IST airport → Karaköy · ~45 km drive (orientation only)',stops:[5,6]},{view:'istpm',title:'Istanbul — evening + Asian-side options',stops:[6,7,8,9,10,11,12,13]}],
+ d28:[{view:'istanbul',title:'Istanbul — Karaköy · Momento Golden Horn',stops:[0,1]},{view:'istanbulw',title:'Transfer overview — hotel → IST airport · ~45 km drive (orientation only)',stops:[0,1,2,3],flight:{album:'tk3',label:'✈️ TK3 · Istanbul IST → New York JFK',sub:'08:05 → 10:55 · PNR ··4B · Uber home from JFK T1'}},{view:'newyork',title:'Transfer overview — JFK → home in LIC · ~25 km drive (orientation only)',stops:[4,5]}]
 };
 function segOf(host){
   var key=host.dataset.daykey, list=DAYSEGS[key];
