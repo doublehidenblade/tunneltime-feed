@@ -70,7 +70,7 @@ button{min-height:44px}
 .flow p{margin:1px 0 0;font-size:14.5px;line-height:1.45;font-weight:600}
 .flow p small{display:block;color:var(--muted);font-weight:600;font-size:12.5px}
 /* POI cards (Days view rows) */
-.poi{display:flex;gap:12px;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:10px;margin:8px 0;cursor:pointer;font:inherit;color:inherit;align-items:center;box-shadow:0 2px 10px rgba(28,25,23,.05)}
+.poi{display:flex;flex-wrap:wrap;gap:12px;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:10px;margin:8px 0;cursor:pointer;font:inherit;color:inherit;align-items:center;box-shadow:0 2px 10px rgba(28,25,23,.05)}
 .poi:active{transform:scale(.99)}
 .poi img{width:76px;height:76px;object-fit:cover;border-radius:10px;flex:0 0 76px;background:#ddd}
 .poi-body{flex:1;min-width:0}
@@ -106,7 +106,7 @@ details p{margin:0 0 12px;font-size:14px;line-height:1.5;color:var(--muted);font
 .tt-row .tt-go{font-size:20px;color:var(--terra);font-weight:800;flex:0 0 auto}
 .tt-row:first-of-type{border-top:none}
 .tt-time{flex:0 0 86px;font-weight:800;font-size:13px}
-.tt-what{flex:1;font-size:14px;font-weight:600;line-height:1.4}
+.tt-what{flex:1;min-width:0;font-size:14px;font-weight:600;line-height:1.4}
 .tt-st{font-size:11.5px;font-weight:800;padding:4px 9px;border-radius:999px;white-space:nowrap}
 .tt-st.g{background:var(--green-bg);color:var(--green)}
 .tt-st.a{background:var(--amber-bg);color:var(--amber)}
@@ -137,7 +137,7 @@ details p{margin:0 0 12px;font-size:14px;line-height:1.5;color:var(--muted);font
 .pin{position:relative;width:42px;height:42px}
 .pin img{width:42px;height:42px;object-fit:cover;border-radius:50%;border:3px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.4);display:block;background:#ddd}
 .pin .emo{width:42px;height:42px;border-radius:50%;border:3px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.4);background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:19px}
-@media(max-width:640px){.grid2{grid-template-columns:1fr}.hero h1{font-size:36px}.day-hero{height:160px}.hero-photo{height:170px}.tt-time{flex-basis:74px}.pin{width:34px;height:34px}.pin img,.pin .emo{width:34px;height:34px;font-size:15px}.pin-n{min-width:17px;height:17px;font-size:10px}}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}.hero h1{font-size:36px}.day-hero{height:160px}.hero-photo{height:170px}.tt-time{flex-basis:74px}.pin{width:34px;height:34px}.pin img,.pin .emo{width:34px;height:34px;font-size:15px}.pin-n{min-width:17px;height:17px;font-size:10px}.poi .goldchip{order:4;margin-left:auto}.poi-body{flex:1 1 0%}}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
 .card h3{margin:0 0 10px;font-size:15px}
 .check{list-style:none;margin:0;padding:0}
@@ -213,7 +213,7 @@ details p{margin:0 0 12px;font-size:14px;line-height:1.5;color:var(--muted);font
 /* ===== v9: side-by-side day maps, pan/zoom, legs, crowd, golden ===== */
 .tabs{grid-template-columns:repeat(2,1fr)}
 .sunline{margin-top:8px;background:var(--amber-bg);color:var(--amber);border-radius:12px;padding:9px 12px;font-size:12.5px;font-weight:800;line-height:1.45}
-.crowd{display:block;font-size:12px;font-weight:700;color:var(--amber);background:var(--amber-bg);border-radius:8px;padding:6px 8px;margin-top:6px;line-height:1.45}
+.crowd{display:block;flex:1 1 100%;order:5;width:100%;min-width:0;font-size:12px;font-weight:700;color:var(--amber);background:var(--amber-bg);border-radius:8px;padding:6px 8px;margin-top:0;line-height:1.45;overflow-wrap:break-word}
 .goldchip{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.05em;padding:3px 8px;border-radius:999px;background:#B45309;color:#FFF7ED;text-transform:uppercase;white-space:nowrap;align-self:center}
 .day-map{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface);margin:12px 0 4px}
 .dmap-head{font-size:12.5px;font-weight:800;padding:9px 12px;background:var(--surface2);line-height:1.4}
@@ -1383,8 +1383,8 @@ function renderAllDayMaps(){
   initDayNav();
   // Crowd intel lines on POI cards
   document.querySelectorAll('#view-days .poi[data-album]').forEach(function(el){
-    var c=CROWD[el.dataset.album]; if(!c)return; var body=el.querySelector('.poi-body'); if(!body||body.querySelector('.crowd'))return;
-    var sp=document.createElement('span'); sp.className='crowd'; sp.textContent=c; body.appendChild(sp);
+    var c=CROWD[el.dataset.album]; if(!c)return; if(el.querySelector('.crowd'))return;
+    var sp=document.createElement('span'); sp.className='crowd'; sp.textContent=c; el.appendChild(sp);
   });
 })();
 // ---------- Floating quick-nav: one chip per day, scrollspy highlight, auto-pin to today during the trip ----------
