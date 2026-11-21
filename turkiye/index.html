@@ -91,7 +91,7 @@ button{min-height:44px}
 details{margin-top:10px;border:1px solid var(--line);border-radius:12px;padding:2px 12px}
 summary{font-weight:800;font-size:13.5px;cursor:pointer;padding:10px 0;min-height:44px;display:flex;align-items:center}
 details p{margin:0 0 12px;font-size:14px;line-height:1.5;color:var(--muted);font-weight:600}
-.maplink{font-size:12.5px;font-weight:800;color:var(--teal);text-decoration:none;display:inline-flex;padding:6px 0}
+.maplink{font-size:12.5px;font-weight:800;color:var(--teal);text-decoration:none;display:inline-flex;padding:6px 0;scroll-margin-top:100px}
 /* Timetable — one bordered block per day */
 .tt-day{border:2px solid var(--line);border-radius:16px;overflow:hidden;margin:18px 0;background:var(--surface);box-shadow:var(--shadow)}
 .tt-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 16px;color:#fff}
@@ -225,7 +225,7 @@ details p{margin:0 0 12px;font-size:14px;line-height:1.5;color:var(--muted);font
 .dmap-svg .edge-hit{pointer-events:stroke;cursor:pointer}
 .dmap-pins{position:absolute;inset:0;pointer-events:none}
 .dmap-pins .mpin,.dmap-pins .legchip{pointer-events:auto}
-.legchip{position:absolute;transform:translate(-50%,-50%) scale(var(--inv,1));transform-origin:50% 50%;background:rgba(20,16,12,.86);color:#fff;border:2px solid #fff;border-radius:999px;font-family:"Manrope",sans-serif;font-size:11px;font-weight:800;padding:7px 11px;min-height:36px;min-width:48px;cursor:pointer;z-index:2;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,.35);-webkit-tap-highlight-color:transparent}
+.legchip{position:absolute;transform:translate(-50%,-50%) scale(var(--inv,1));transform-origin:50% 50%;background:rgba(20,16,12,.86);color:#fff;border:2px solid #fff;border-radius:999px;font-family:"Manrope",sans-serif;font-size:11px;font-weight:800;padding:7px 11px;min-height:36px;min-width:48px;cursor:pointer;z-index:4;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,.35);-webkit-tap-highlight-color:transparent}
 .legchip:active{transform:translate(-50%,-50%) scale(var(--inv,1)) scale(1.08)}
 .dmap-world .mpin{position:absolute;transform:translate(-50%,-100%) scale(var(--inv,1));transform-origin:50% 100%;background:none;border:none;padding:0;cursor:pointer;z-index:3;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;align-items:center}
 .dmap-img-hi{position:absolute;display:block;user-select:none;-webkit-user-drag:none;opacity:0;transition:opacity .25s ease;pointer-events:none}
@@ -1027,17 +1027,23 @@ var ROUTED={"d21":{"2":[[41.0248,28.9775],[41.02488,28.97765],[41.02449,28.97819
 var MAPVIEWS={"world": {"img": "img/5f49c34a63422281428a.jpg", "z": 4, "x0": 1086, "y0": 1093, "w": 1400, "h": 900}, "turkiye": {"img": "img/86a9518da6f01bd62c12.jpg", "z": 7, "x0": 18651, "y0": 11967, "w": 1400, "h": 900}, "istanbulw": {"img": "img/68610ff712b4e9013476.jpg", "z": 11, "x0": 303489, "y0": 195849, "w": 1400, "h": 900}, "istanbul": {"img": "img/2fec10911f794419793d.jpg", "z": 14, "x0": 2434000, "y0": 1571795, "w": 1400, "h": 900}, "cappadocia": {"img": "img/d68e493efb5b935357db.jpg", "z": 11, "x0": 312169, "y0": 200725, "w": 1400, "h": 900}, "newyork": {"img": "img/1fbac85a4a0356e9fc9b.jpg", "z": 10, "x0": 76523, "y0": 98123, "w": 1400, "h": 900}, "nyc": {"img": "img/8d740f5424bf8b17c1ff.jpg", "z": 13, "x0": 617150, "y0": 787741, "w": 1400, "h": 900}, "istpm": {"img": "img/f5e0f8a7be19bf456279.jpg", "z": 13, "x0": 1216813, "y0": 785680, "w": 1400, "h": 900}, "karakoy": {"img": "img/394f93cbb04bb82f874f.jpg", "z": 17, "x0": 19476851.5, "y0": 12576652.5, "w": 1855.5, "h": 1193.0}, "sultanahmet": {"img": "img/03a82b3398ac6318db89.jpg", "z": 17, "x0": 19477376.5, "y0": 12578887.5, "w": 1551.5, "h": 997.5}, "eminonu": {"img": "img/79637c669b38aaf2adcf.jpg", "z": 17, "x0": 19476704.5, "y0": 12577965.5, "w": 1403.5, "h": 902.0}, "sehremini": {"img": "img/d8572372e7369df60388.jpg", "z": 17, "x0": 19473088.0, "y0": 12578192.0, "w": 1198.5, "h": 770.5}, "cihangir": {"img": "img/ecf2b4b1583fdaddd9f0.jpg", "z": 17, "x0": 19477708.0, "y0": 12576158.0, "w": 1279.5, "h": 822.5}, "bazaar": {"img": "img/605c06b02bfb22a1fcdb.jpg", "z": 17, "x0": 19476398.0, "y0": 12578280.5, "w": 1690.5, "h": 1087.0}, "galata": {"img": "img/dcd589699278dd0bff94.jpg", "z": 17, "x0": 19477268.0, "y0": 12576819.0, "w": 1087.5, "h": 699.0}, "uskudar": {"img": "img/2ee5b73f626423d28088.jpg", "z": 17, "x0": 19480988.5, "y0": 12576942.0, "w": 1243.0, "h": 799.0}, "maiden": {"img": "img/4bca6c0afd3b13d703de.jpg", "z": 17, "x0": 19480004.5, "y0": 12579662.0, "w": 1198.0, "h": 770.0}, "kadikoy": {"img": "img/c7cad8ffbb213aa52bdb.jpg", "z": 17, "x0": 19482090.5, "y0": 12581217.5, "w": 1275.5, "h": 820.0}, "nisantasi": {"img": "img/b33b8066aeadc584071a.jpg", "z": 17, "x0": 19478604.0, "y0": 12574125.0, "w": 1165.5, "h": 749.0}, "goreme": {"img": "img/0fc9d0d5f0abce78eee3.jpg", "z": 17, "x0": 20022715.5, "y0": 12866311.5, "w": 1317.5, "h": 847.0}, "museum": {"img": "img/c6d3dc8621e2114e81eb.jpg", "z": 17, "x0": 20024470.5, "y0": 12866498.5, "w": 1125.5, "h": 723.5}, "pasabag": {"img": "img/b305022f903b7a9a6810.jpg", "z": 17, "x0": 20025515.0, "y0": 12862156.5, "w": 1730.5, "h": 1112.5}, "avanos": {"img": "img/99a48935665133533aa9.jpg", "z": 17, "x0": 20024633.0, "y0": 12857615.5, "w": 1126.5, "h": 724.0}, "panorama": {"img": "img/93efcdb030fe9226bf5f.jpg", "z": 17, "x0": 20023837.0, "y0": 12865735.0, "w": 1125.5, "h": 723.5}, "uchisar": {"img": "img/492cd70789adf2acff87.jpg", "z": 17, "x0": 20021091.0, "y0": 12867231.5, "w": 1332.0, "h": 856.5}, "derinkuyu": {"img": "img/9c8e5d09f4b4e8360aa4.jpg", "z": 17, "x0": 20014034.5, "y0": 12897310.0, "w": 1175.0, "h": 755.5}, "urgup": {"img": "img/647f02425e1761e23009.jpg", "z": 17, "x0": 20030762.0, "y0": 12867632.5, "w": 1125.5, "h": 723.5}, "lic": {"img": "img/4e79d39a8b408c1df5ad.jpg", "z": 17, "x0": 9884966.0, "y0": 12610653.5, "w": 1271.0, "h": 817.0}};
 var DAYVIEW={all:'world',d20:'newyork',d21:'istanbulw',d22:'istanbul',d23:'istanbul',d24:'turkiye',d25:'cappadocia',d26:'cappadocia',d27:'turkiye',d28:'world'};
 // Detail mosaics: ONE full-footprint mosaic per view, stitched from Esri tiles at base zoom +1
-// (2800x1800 over the same ground as the 1400x900 base). It fades in past ~1.9x. The zoom level is
-// chosen to match the display zoom: at x6-x10 its street labels render ~9-14px and stay legible,
-// where deeper (z+3) patches rendered the same labels at half that size and read as blur.
+// (2800x1800 over the SAME ground as the 1400x900 base — same centre, same extent, double
+// resolution; verified by cross-correlating every mosaic against its base). It fades in past
+// ~1.9x. The zoom level is chosen to match the display zoom: at x6-x10 its street labels
+// render ~9-14px and stay legible, where deeper (z+3) patches rendered the same labels at
+// half that size and read as blur.
+// WARNING: lat/lon MUST stay the base view's exact centre (from MAPVIEWS x0+w/2, y0+h/2).
+// A wrong centre misregisters the layer: it then paints a DIFFERENT part of the city over
+// the base — its pale-blue water (Bosphorus / lakes / sea) lands on land and reads as a
+// translucent blue wash, and its streets disagree with the route lines + pins.
 var DETAILVIEWS={
- istanbul:{img:'img/b1d22d6492b51ec0a0b7.jpg',z:15,lat:41.013123,lon:28.968548,w:2800,h:1800},
- istanbulw:{img:'img/86c7e0761ff8ee14a0b1.jpg',z:12,lat:41.044284,lon:28.987305,w:2800,h:1800},
- cappadocia:{img:'img/47a291700d6fa7708df8.jpg',z:12,lat:38.642425,lon:34.810425,w:2800,h:1800},
- newyork:{img:'img/4782cdaab63854f4607f.jpg',z:11,lat:40.839077,lon:-73.992920,w:2800,h:1800},
+ istanbul:{img:'img/b1d22d6492b51ec0a0b7.jpg',z:15,lat:41.019995,lon:28.971977,w:2800,h:1800},
+ istanbulw:{img:'img/86c7e0761ff8ee14a0b1.jpg',z:12,lat:41.139882,lon:28.870010,w:2800,h:1800},
+ cappadocia:{img:'img/47a291700d6fa7708df8.jpg',z:12,lat:38.570180,lon:34.830093,w:2800,h:1800},
+ newyork:{img:'img/4782cdaab63854f4607f.jpg',z:11,lat:40.700422,lon:-73.950348,w:2800,h:1800},
  nyc:{img:'img/3c47b32301d4d02a3b37.jpg',z:14,lat:40.7515,lon:-73.9390,w:2800,h:1800},
  istpm:{img:'img/f72e6fcb5e67fa1dfaee.jpg',z:14,lat:41.0190,lon:29.0000,w:2800,h:1800},
- turkiye:{img:'img/8dd72dbcbe6f2ea2884a.jpg',z:8,lat:39.892133,lon:32.848435,w:2800,h:1800}
+ turkiye:{img:'img/8dd72dbcbe6f2ea2884a.jpg',z:8,lat:39.901309,lon:32.596436,w:2800,h:1800}
 };
 var DEEPPATCHES={};
 function gpx(lat,lon,z){ var n=256*Math.pow(2,z); var x=(lon+180)/360*n; var r=lat*Math.PI/180; var y=(1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*n; return [x,y]; }
@@ -1320,12 +1326,26 @@ function attachPZ(viewport,world,ctrl,opts){
   function clamp(){ if(!vpW)measure(); st.x=Math.min(60,Math.max(vpW-60-vpW*st.s,st.x)); st.y=Math.min(60,Math.max(vpH-60-vpH*st.s,st.y)); }
   function zoomAt(px,py,f){ var ns=Math.min(maxS,Math.max(1,st.s*f)); if(ns===st.s)return; st.x=px-(px-st.x)*(ns/st.s); st.y=py-(py-st.y)*(ns/st.s); st.s=ns; clamp(); schedule(); }
   viewport.addEventListener('wheel',function(e){ e.preventDefault(); cancelAnim(); measure(); zoomAt(e.clientX-vpL,e.clientY-vpT,e.deltaY<0?1.18:0.85); settle(); },{passive:false});
-  viewport.addEventListener('pointerdown',function(e){ var t=e.target; if(t&&t.closest&&t.closest('.mpin,.legchip,.edge-hit,.dmap-ctrl'))return; cancelAnim(); clearTimeout(settleTimer); measure(); ptrs[e.pointerId]={x:e.clientX,y:e.clientY}; moved=0; try{viewport.setPointerCapture(e.pointerId);}catch(err){} });
+  // DRAG vs TAP: a press ANYWHERE on the map surface starts tracking — including on a
+  // route line (.edge-hit), a pin or a leg chip. The fat stroke hit-areas scale WITH the
+  // zoom (72 viewBox units ≈ 160px on screen at x10 after the settle-rebase), so excluding
+  // them from pointerdown (the old behaviour) made most of a zoomed map refuse to pan: the
+  // touch landed on a route's hit corridor — on transfer overviews the single diagonal
+  // corridor covers the whole viewport — and no gesture ever started. Only the zoom
+  // buttons stay excluded. Pointer capture is DEFERRED until the press proves to be a
+  // drag (moved>6): a clean tap keeps its natural target, so pin / line / pill clicks land
+  // exactly as before, and after a real drag their handlers' LASTDRAG guard (plus the
+  // capture retarget) swallows the click. Rebase still runs only when the LAST pointer
+  // lifts — never mid-gesture.
+  viewport.addEventListener('pointerdown',function(e){ var t=e.target; if(t&&t.closest&&t.closest('.dmap-ctrl'))return; cancelAnim(); clearTimeout(settleTimer); measure(); ptrs[e.pointerId]={x:e.clientX,y:e.clientY,cap:false}; moved=0; });
   viewport.addEventListener('pointermove',function(e){ if(!ptrs[e.pointerId])return; var p=ptrs[e.pointerId]; var dx=e.clientX-p.x,dy=e.clientY-p.y; p.x=e.clientX; p.y=e.clientY; var ids=Object.keys(ptrs);
-    if(ids.length===2){ var a=ptrs[ids[0]],b=ptrs[ids[1]]; var d=Math.hypot(a.x-b.x,a.y-b.y); if(lastDist>0){ zoomAt((a.x+b.x)/2-vpL,(a.y+b.y)/2-vpT,d/lastDist); } lastDist=d; moved+=Math.abs(dx)+Math.abs(dy); }
-    else { st.x+=dx; st.y+=dy; moved+=Math.abs(dx)+Math.abs(dy); clamp(); schedule(); } });
-  function up(e){ delete ptrs[e.pointerId]; if(Object.keys(ptrs).length<2)lastDist=0; if(moved>6)LASTDRAG=Date.now(); if(!Object.keys(ptrs).length) rebase(); }
+    moved+=Math.abs(dx)+Math.abs(dy);
+    if(moved>6&&!p.cap){ p.cap=true; try{viewport.setPointerCapture(e.pointerId);}catch(err){} }
+    if(ids.length===2){ var a=ptrs[ids[0]],b=ptrs[ids[1]]; var d=Math.hypot(a.x-b.x,a.y-b.y); if(lastDist>0){ zoomAt((a.x+b.x)/2-vpL,(a.y+b.y)/2-vpT,d/lastDist); } lastDist=d; }
+    else { st.x+=dx; st.y+=dy; clamp(); schedule(); } });
+  function up(e){ if(!ptrs[e.pointerId])return; delete ptrs[e.pointerId]; if(Object.keys(ptrs).length<2)lastDist=0; if(moved>6)LASTDRAG=Date.now(); if(!Object.keys(ptrs).length) rebase(); }
   viewport.addEventListener('pointerup',up); viewport.addEventListener('pointercancel',up);
+  window.addEventListener('pointerup',up); window.addEventListener('pointercancel',up);
   viewport.addEventListener('dblclick',function(e){ if(e.target.closest('.mpin'))return; st={s:1,x:0,y:0}; rebase(); });
   window.addEventListener('resize',function(){ vpW=0; if(R!==1){ R=1; world.style.width=''; world.style.height=''; clamp(); schedule(); } });
   if(ctrl){ ctrl.querySelector('[data-z="in"]').addEventListener('click',function(){ measure(); zoomAt(vpW/2,vpH/2,1.6); settle(); });
