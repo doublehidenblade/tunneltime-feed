@@ -1,9 +1,9 @@
 {
- "contentVersion": 7,
+ "contentVersion": 8,
  "files": {
   "index.html": {
-   "sha256": "9ea11334f3a899d7e971d288ba7bc88291392bfe7185d827f8f4ffdb3c973a52",
-   "size": 281334
+   "sha256": "6df627c62a0c2b2d821bd4ed786a0b174a6ba828bf5c2fc546fe634987a21038",
+   "size": 283014
   },
   "img/01252171cca6f287129b.jpg": {
    "sha256": "01252171cca6f287129b60ad68dc72eed50d3256131b5fb650f63fca81b9ea1a",
